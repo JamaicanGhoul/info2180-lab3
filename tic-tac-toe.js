@@ -66,7 +66,7 @@ function gamePlay(){
             else if( currentHolder[8] !== undefined && ((currentHolder[6]===currentHolder[7] && currentHolder[7]===currentHolder[8]) 
                 || (currentHolder[2]===currentHolder[5] && currentHolder[5]===currentHolder[8]))){
                     
-                status.innerText = `Congratulations! ${currentHolder[8]} is the Winner!`;
+                status.innerText = `Congratulations! ${currentHolder[8]} is the Winner!!!`;
                 status.classList.add('you-won');
                 isGameEnd = true;
                 window.scrollTo({
@@ -88,4 +88,21 @@ function gamePlay(){
             event.target.classList.remove('hover');
         };
     }
+
+    restart.onclick = event =>{
+        currentHolder = new Array(9);
+        isGameEnd = false;
+        
+        status.classList.remove('you-won');
+        status.innerText = 'Move the mouse over a square then click to play a X or an O.';
+
+        ender = 'O';
+
+        for (let square of squares){
+            square.classList.remove('X');
+            square.classList.remove('O');
+            square.innerText = '';
+        }
+
+    };
 }
